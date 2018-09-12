@@ -3,18 +3,29 @@
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
        xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
 
+    <!--shiro配置-->
     <bean id="shiroFilter" class="org.apache.shiro.spring.web.ShiroFilterFactoryBean">
+        <!--安全管理器对象-->
         <property name="securityManager" ref="securityManager"/>
-        <property name="loginUrl" value="/login.jsp"/>
-        <property name="successUrl" value="/home.jsp"/>
-        <property name="unauthorizedUrl" value="/unauthorized.jsp"/>
+        <!--登陆界面url-->
+        <property name="loginUrl" value="/shiro/login"/>
+        <!--登陆成功url-->
+        <property name="successUrl" value="/index.jsp"/>
+        <!--无权限url-->
+        <property name="unauthorizedUrl" value="unauthorized"/>
+        <!--url拦截规则-->
         <property name="filterChainDefinitions">
             <value>
+                /shiro/login = anon
+                /shiro/checkLogin = anon
                 /** = authc
             </value>
         </property>
     </bean>
+    <!--安全管理器-->
     <bean id="securityManager" class="org.apache.shiro.web.mgt.DefaultWebSecurityManager">
         <property name="realm" ref="myRealm"/>
     </bean>
+    <!--自定义realm 也可以在类上加@Component-->
+    <bean id="myRealm" class="top.ingxx.realm.myRealm"/>
 </beans>
