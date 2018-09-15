@@ -12,12 +12,13 @@
         <!--登陆成功url-->
         <property name="successUrl" value="/index.jsp"/>
         <!--无权限url-->
-        <property name="unauthorizedUrl" value="/error.jsp"/>
+        <property name="unauthorizedUrl" value="/shiro/error"/>
         <!--url拦截规则-->
         <property name="filterChainDefinitions">
             <value>
                 /shiro/login = anon
                 /shiro/checkLogin = anon
+                /shiro/permission = perms["permission"]
                 /** = authc
             </value>
         </property>

@@ -12,30 +12,41 @@ import org.springframework.web.bind.annotation.*;
 public class shiroController {
 
     Logger logger = Logger.getLogger(this.getClass());
+
     @RequestMapping("login")
-    public String login(){
-        return  "login";
+    public String login() {
+        return "login";
     }
 
     @RequestMapping("logout")
-    public String logout(){
+    public String logout() {
         return "logout";
     }
 
-    @RequestMapping(value = "checkLogin",method = RequestMethod.POST)
-    public String checkLogin(@RequestParam(value = "userName") String userName,@RequestParam(value="passWord") String passWord){
+    @RequestMapping(value = "checkLogin", method = RequestMethod.POST)
+    public String checkLogin(@RequestParam(value = "userName") String userName, @RequestParam(value = "passWord") String passWord) {
         //实例化token
-        UsernamePasswordToken token = new UsernamePasswordToken(userName,passWord);
+        UsernamePasswordToken token = new UsernamePasswordToken(userName, passWord);
         //获取subject对象
         Subject subject = SecurityUtils.getSubject();
         try {
             //登陆方法会调用Realm
             subject.login(token);
-        }catch (Exception e){
+        } catch (Exception e) {
             e.printStackTrace();
             return "用户名密码错误";
         }
         logger.debug("登陆成功");
         return "index";
+    }
+
+    @RequestMapping("error")
+    public String error(){
+        return "error";
+    }
+
+    @RequestMapping("permission")
+    public String permission(){
+        return "permission";
     }
 }

@@ -13,10 +13,10 @@ public class myRealm extends AuthorizingRealm {
     @Override
     protected AuthorizationInfo doGetAuthorizationInfo(PrincipalCollection principalCollection) {
         SimpleAuthorizationInfo info = new SimpleAuthorizationInfo();
-        info.addStringPermission("test");
+        info.addStringPermission("permission");
 
         // TODO: 2018/9/15 需要改成从数据库中查询
-        return null;
+        return info;
     }
 
 //    认证方法
