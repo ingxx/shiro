@@ -31,7 +31,6 @@ public class shiroController {
         try {
             //登陆方法会调用Realm
             subject.login(token);
-
         }catch (Exception e){
             e.printStackTrace();
             return "用户名密码错误";

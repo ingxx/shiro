@@ -12,7 +12,7 @@
         <!--登陆成功url-->
         <property name="successUrl" value="/index.jsp"/>
         <!--无权限url-->
-        <property name="unauthorizedUrl" value="unauthorized"/>
+        <property name="unauthorizedUrl" value="/error.jsp"/>
         <!--url拦截规则-->
         <property name="filterChainDefinitions">
             <value>
