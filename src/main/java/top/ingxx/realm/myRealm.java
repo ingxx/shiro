@@ -1,6 +1,6 @@
 package top.ingxx.realm;
 
-import org.apache.log4j.Logger;
+import org.apache.shiro.SecurityUtils;
 import org.apache.shiro.authc.*;
 import org.apache.shiro.authz.AuthorizationInfo;
 import org.apache.shiro.authz.SimpleAuthorizationInfo;
@@ -13,8 +13,9 @@ public class myRealm extends AuthorizingRealm {
     @Override
     protected AuthorizationInfo doGetAuthorizationInfo(PrincipalCollection principalCollection) {
         SimpleAuthorizationInfo info = new SimpleAuthorizationInfo();
+        //添加权限
         info.addStringPermission("permission");
-
+        //SecurityUtils.getSubject().getPrincipal();
         // TODO: 2018/9/15 需要改成从数据库中查询
         return info;
     }

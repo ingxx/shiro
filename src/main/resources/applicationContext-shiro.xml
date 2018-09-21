@@ -19,6 +19,7 @@
                 /shiro/login = anon
                 /shiro/checkLogin = anon
                 /shiro/permission = perms["permission"]
+                /logout.jsp = logout
                 /** = authc
             </value>
         </property>
